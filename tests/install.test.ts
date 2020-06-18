@@ -14,7 +14,7 @@ describe("vue-logger.ts", () => {
             logLevel: LogLevels.ERROR,
             separator: "|",
             stringifyArguments: false,
-            showConsoleColors: true,
+            showArgumentInTable: false,
             showLogLevel: false,
             showMethodName: false,
         };
@@ -33,7 +33,7 @@ describe("vue-logger.ts", () => {
             logLevel: LogLevels.DEBUG,
             separator: "|",
             stringifyArguments: false,
-            showConsoleColors: true,
+            showArgumentInTable: false,
             showLogLevel: false,
             showMethodName: "wrong value for test.",
         };

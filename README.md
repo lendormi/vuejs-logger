@@ -63,7 +63,7 @@ Below you can find an example of how to use vuejs-logger :
 | showLogLevel  | false | Boolean          | false       | If true, the loglevel will be shown. |
 | showMethodName | false | Boolean | false       | If true, the method name of the parent function will be shown in the console. |
 | separator | false | String | ' l '       | The seperator between parts of the output ( see [screenshot](#screenshot). |
-| showConsoleColors | false | Boolean | false       | If true, enables console.warn, console.fatal, console.error for corresponding loglevels. |
+| showArgumentInTable | false | Boolean | false       | If true, argument are put in a table
 
 #### Code example
 

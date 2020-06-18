@@ -28,7 +28,7 @@ class VueLogger implements ILogger {
         if (options.showLogLevel && typeof options.showLogLevel !== "boolean") {
             return false;
         }
-        if (options.showConsoleColors && typeof options.showConsoleColors !== "boolean") {
+        if (options.showArgumentInTable && typeof options.showArgumentInTable !== "boolean") {
             return false;
         }
         if (options.separator && (typeof options.separator !== "string" || (typeof options.separator === "string" && options.separator.length > 3))) {
@@ -72,7 +72,7 @@ class VueLogger implements ILogger {
                         const logLevelPrefix = options.showLogLevel ? logLevel + ` ${options.separator} ` : "";
                         const formattedArguments = options.stringifyArguments ? args.map((a) => JSON.stringify(a)) : args;
                         const logMessage = `${logLevelPrefix} ${methodNamePrefix}`;
-                        this.printLogMessage(logLevel, logMessage, options.showConsoleColors, formattedArguments);
+                        this.printLogMessage(logLevel, logMessage, options.showArgumentInTable, formattedArguments);
                         return `${logMessage} ${formattedArguments.toString()}`;
                     };
                 } else {
@@ -83,11 +83,16 @@ class VueLogger implements ILogger {
         return logger;
     }
 
-    private printLogMessage(logLevel: string, logMessage: string, showConsoleColors: boolean, formattedArguments: any) {
+    private printLogMessage(logLevel: string, logMessage: string, showArgumentInTable: boolean, formattedArguments: any) {
         if (typeof console[logLevel] === 'undefined') {
             throw new Error(`This logLevel ${logLevel} on vuejs-logger doesn't work.`);
         }
-        console[logLevel](logMessage, ...formattedArguments);
+        if (showArgumentInTable) {
+            console[logLevel](logMessage, ...formattedArguments);
+            console.table(formattedArguments)
+        } else {
+            console[logLevel](logMessage, ...formattedArguments);
+        }
     }
 
     private getDefaultOptions(): ILoggerOptions {
@@ -95,7 +100,7 @@ class VueLogger implements ILogger {
             isEnabled: true,
             logLevel: LogLevels.DEBUG,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
             showLogLevel: false,
             showMethodName: false,
             stringifyArguments: false,

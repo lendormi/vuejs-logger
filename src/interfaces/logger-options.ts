@@ -4,7 +4,7 @@ export interface ILoggerOptions {
     isEnabled: boolean;
     logLevel: LogLevels;
     separator: string;
-    showConsoleColors: boolean;
+    showArgumentInTable: boolean;
     showLogLevel: boolean;
     showMethodName: boolean;
     stringifyArguments: boolean;

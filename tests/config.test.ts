@@ -14,7 +14,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: true,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels);
         strictEqual(input, true);
     });
@@ -28,7 +28,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: true,
             separator: "|||||",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), false);
 
         strictEqual(VueLogger.isValidOptions({
@@ -38,7 +38,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: true,
             separator: "|",
-            showConsoleColors: "FOO",
+            showArgumentInTable: "FOO",
         } as any, logLevels), false);
 
         strictEqual(VueLogger.isValidOptions({
@@ -48,7 +48,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: "TEST",
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), false);
 
         strictEqual(VueLogger.isValidOptions({
@@ -58,7 +58,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: false,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), false);
 
         strictEqual(VueLogger.isValidOptions({
@@ -68,7 +68,7 @@ describe("isValidOptions()", () => {
             showLogLevel: "TEST",
             showMethodName: false,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), false);
 
         strictEqual(VueLogger.isValidOptions({
@@ -78,7 +78,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: false,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), false);
 
         strictEqual(VueLogger.isValidOptions({
@@ -99,7 +99,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: false,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), true);
 
         strictEqual(VueLogger.isValidOptions({
@@ -109,7 +109,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: false,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), true);
 
         strictEqual(VueLogger.isValidOptions({
@@ -119,7 +119,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: false,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), false);
 
         strictEqual(VueLogger.isValidOptions({
@@ -129,7 +129,7 @@ describe("isValidOptions()", () => {
             showLogLevel: false,
             showMethodName: false,
             separator: "|",
-            showConsoleColors: false,
+            showArgumentInTable: false,
         } as any, logLevels), false);
     });
 });

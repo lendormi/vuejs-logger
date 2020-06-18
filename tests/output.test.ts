@@ -13,9 +13,9 @@ describe("output", () => {
             logLevel: LogLevels.DEBUG,
             stringifyArguments: false,
             showLogLevel: false,
+            showArgumentInTable: false,
             showMethodName: true,
             separator: "|",
-            showConsoleColors: false,
         } as ILoggerOptions;
 
         Vue.use(VueLogger, options);
