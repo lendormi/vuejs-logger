@@ -11,7 +11,7 @@ describe("vue-logger.ts", () => {
     test("install() should work as expected with the correct params.", () => {
         const options: ILoggerOptions = {
             isEnabled: true,
-            logLevel: LogLevels.FATAL,
+            logLevel: LogLevels.ERROR,
             separator: "|",
             stringifyArguments: false,
             showConsoleColors: true,
@@ -22,9 +22,9 @@ describe("vue-logger.ts", () => {
         expect(Vue.$log).to.be.a("object");
         strictEqual(Vue.$log.debug("debug"), undefined);
         strictEqual(Vue.$log.info("info"), undefined);
+        strictEqual(Vue.$log.log("log"), undefined);
         strictEqual(Vue.$log.warn("warn"), undefined);
-        strictEqual(Vue.$log.error("error"), undefined);
-        expect(Vue.$log.fatal("fatal")).to.exist;
+        expect(Vue.$log.error("error")).to.exist;
     });
 
     test("install() should throw an error with the an incorrect parameter.", () => {

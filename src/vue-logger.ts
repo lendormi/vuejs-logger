@@ -84,11 +84,10 @@ class VueLogger implements ILogger {
     }
 
     private printLogMessage(logLevel: string, logMessage: string, showConsoleColors: boolean, formattedArguments: any) {
-        if (showConsoleColors && (logLevel === "warn" || logLevel === "error" || logLevel === "fatal")) {
-            console[logLevel === "fatal" ? "error" : logLevel](logMessage, ...formattedArguments);
-        } else {
-            console.log(logMessage, ...formattedArguments);
+        if (typeof console[logLevel] === 'undefined') {
+            throw new Error(`This logLevel ${logLevel} on vuejs-logger doesn't work.`);
         }
+        console[logLevel](logMessage, ...formattedArguments);
     }
 
     private getDefaultOptions(): ILoggerOptions {

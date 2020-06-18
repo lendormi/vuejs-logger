@@ -32,10 +32,10 @@ vuejs-logger is a tool that enables configurable logging for Vue applications. F
 - Output restriction based on selected loglevel.
 - Automatically JSON.stringify() the (reactive) properties passed to the logger.
 - Configurable options to customize output for a log messages.
-- Colored console messages for $log.warning, $log.error and $log.fatal.
+- Colored console messages for $log.warning and $log.error.
 
 ```js
-logLevels :  ['debug', 'info', 'warn', 'error', 'fatal']
+logLevels :  ['debug', 'log', 'info', 'warn', 'error']
 ```
 
 
@@ -58,7 +58,7 @@ Below you can find an example of how to use vuejs-logger :
 | Name      | Required | Type          | Default     | Description |
 | ---       | ---      | ---           | ---         | ---         |
 | isEnabled      | false  | Boolean |  true            | Enables the vuejs-logger plugin, useful toggle for production/development. |
-| logLevel     | false | String | 'debug'           | Choose between ['debug', 'info', 'warn', 'error', 'fatal']. Read [production tips](#production-tips). |
+| logLevel     | false | String | 'debug'           | Choose between ['debug', 'log', 'info', 'warn', 'error']. Read [production tips](#production-tips). |
 | stringifyArguments | false | Boolean          | false       | If true, all input will go through JSON.stringify(). Useful when printing reactive properties.|
 | showLogLevel  | false | Boolean          | false       | If true, the loglevel will be shown. |
 | showMethodName | false | Boolean | false       | If true, the method name of the parent function will be shown in the console. |
@@ -94,10 +94,10 @@ new Vue({
     },
     created() {
         this.$log.debug('test', this.a, 123)
+        this.$log.log('test', this.a, 123)
         this.$log.info('test', this.b)
         this.$log.warn('test')
         this.$log.error('test')
-        this.$log.fatal('test')
         externalFunction()
     }
 });
@@ -114,18 +114,16 @@ function externalFunction() {
 ![screen shot 2017-10-17 at 10 54 05](https://user-images.githubusercontent.com/3469323/31655570-910fcbbe-b329-11e7-9738-bece4be4d1a8.png)
 
 ## Production tips
-The plugin can be disabled for production or a lower logLevel can be set to minimize output (as shown in [usage](#usage) ). If the logLevel is set to 'fatal' the plugin will 
-ignore all calls with less important loglevels in the code. 
+The plugin can be disabled for production or a lower logLevel can be set to minimize output (as shown in [usage](#usage) ).
 
 ```js
     function foo() {
-        // these statements will print nothing if the logLevel is set to 'fatal'. But they will compile just fine. 
+        // these statements will print nothing if the logLevel is set to 'error'. But they will compile just fine. 
         this.$log.debug('test', 'bar')
         this.$log.info('test')
         this.$log.warn('test')
+        // this statement will print if the logLevel is set to 'error'
         this.$log.error('test', 'foo')
-        // this statement will print if the logLevel is set to 'fatal'
-        this.$log.fatal('test', 'bar', 123)
     }
 ```
 

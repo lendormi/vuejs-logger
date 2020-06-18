@@ -26,7 +26,7 @@ describe("output", () => {
             },
             methods: {
                 foo() {
-                    expect(Vue.$log.fatal("test")).to.exist;
+                    expect(Vue.$log.log("test")).to.exist;
                     expect(Vue.$log.error("error")).to.exist;
                     expect(Vue.$log.warn("warn")).to.exist;
                     expect(Vue.$log.info("info")).to.exist;
@@ -37,8 +37,8 @@ describe("output", () => {
         });
 
         function externalFunction(): void {
-            expect(Vue.$log.fatal("test")).to.exist;
-            expect(Vue.$log.fatal("test")).to.contains("externalFunction");
+            expect(Vue.$log.log("test")).to.exist;
+            expect(Vue.$log.log("test")).to.contains("externalFunction");
         }
     });
 });

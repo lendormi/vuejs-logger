@@ -10,11 +10,11 @@ export interface Log {
 
     info(...args: any[]): void;
 
+    log(...args: any[]): void;
+
     warn(...args: any[]): void;
 
     error(...args: any[]): void;
-
-    fatal(...args: any[]): void;
 }
 
 declare module 'vue/types/vue' {
